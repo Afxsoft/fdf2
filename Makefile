@@ -1,24 +1,37 @@
-NAME	=	fdf
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aouloube <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/02/11 17:03:20 by aouloube          #+#    #+#              #
+#    Updated: 2016/02/11 17:19:37 by aouloube         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRC		= 	main.c \
-			map.c \
-			fdf.c \
-			helper.c
-			
-LIBFT	= libft/libft.a
-MLX		= mlx/libmlx.a
+NAME = fdf
 
-LIBSDIR	= -L ./lib
+SRC =  main.c \
+	   map.c \
+	   fdf.c \
+	  helper.c
 
-LIBS	= -lft -lmlx
+LIBFT = libft/libft.a
 
-INC		= ./inc/
+MLX = mlx/libmlx.a
 
-OBJ		= $(SRC:.c=.o)
+LIBSDIR = -L ./lib
 
-CC		= gcc
+LIBS = -lft -lmlx
 
-CCFLAGS	= -Wall -Werror -Wextra
+INC = ./inc/
+
+OBJ = $(SRC:.c=.o)
+
+CC = gcc
+
+CCFLAGS = -Wall -Werror -Wextra
 
 FRAMEWORK = -framework OpenGL -framework AppKit
 

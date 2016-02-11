@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouloube <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/11 14:35:30 by aouloube          #+#    #+#             */
+/*   Updated: 2016/02/11 18:12:55 by aouloube         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
@@ -26,6 +37,7 @@ typedef struct	s_point2d
 typedef struct	s_map
 {
 	int			***map;
+	int			max_value;
 	t_point2d	offset;
 }				t_map;
 
@@ -39,10 +51,9 @@ typedef struct	s_fdf
 
 int				get_next_line(int fd, char **line);
 int				***load_map(char *file);
-int				draw_map(t_fdf *fdf);
 int				keyboard_event(int keycode);
 void			point(t_fdf *fdf, int x, int y, int color);
-int				is_in_window(int bounds_width, int bounds_height, int x, int y);
+void			draw_map(t_fdf *fdf);
 void			draw_line(t_fdf *fdf, t_point2d start, t_point2d end,
 				int color);
 

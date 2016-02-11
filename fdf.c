@@ -1,10 +1,22 @@
-#include "fdf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouloube <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/11 17:23:45 by aouloube          #+#    #+#             */
+/*   Updated: 2016/02/11 18:44:25 by aouloube         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "fdf.h"
+#include <stdio.h>
 static t_point2d	get_iso_point(t_fdf *fdf, int x, int y, int z)
 {
 	t_point2d	point;
 
-	point.x =  ISO_ANGLE  * (x * cos(RAD(ISO_ANGLE)) - y *
+	point.x = ISO_ANGLE * (x * cos(RAD(ISO_ANGLE)) - y *
 			cos(RAD(ISO_ANGLE)));
 	point.y = (-ISO_ANGLE) * ((z * 0.1) - x *
 			sin(RAD(ISO_ANGLE)) - y * sin(RAD(ISO_ANGLE)));
@@ -13,7 +25,7 @@ static t_point2d	get_iso_point(t_fdf *fdf, int x, int y, int z)
 	return (point);
 }
 
-static int			upper_point(int ***map, int x, int y)
+static int		upper_point(int ***map, int x, int y)
 {
 	int		i;
 
@@ -28,7 +40,7 @@ static int			upper_point(int ***map, int x, int y)
 	return (0);
 }
 
-static void			buff_image(t_fdf *fdf)
+void		draw_map(t_fdf *fdf)
 {
 	int		x;
 	int		y;
@@ -50,14 +62,8 @@ static void			buff_image(t_fdf *fdf)
 							fdf->map.map[y][x][0]), get_iso_point(fdf,
 								x, y - 1, fdf->map.map[y - 1][x][0]), color);
 			x++;
-			color++;
+			//color++;
 		}
 		y++;
 	}
-}
-
-int					draw_map(t_fdf *fdf)
-{
-	buff_image(fdf);
-	return (0);
 }

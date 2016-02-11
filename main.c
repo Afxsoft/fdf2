@@ -1,5 +1,17 @@
-#include "fdf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aouloube <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/11 17:03:50 by aouloube          #+#    #+#             */
+/*   Updated: 2016/02/11 18:44:53 by aouloube         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "fdf.h"
+#include <stdio.h>
 static void		ft_init(t_fdf *fdf, char *file)
 {
 	int ***temp;
@@ -32,7 +44,7 @@ int				main(int argc, char **argv)
 
 	ft_checks(argc, argv);
 	ft_init(&fdf, argv[1]);
-	mlx_expose_hook(fdf.win, draw_map, &fdf);
+	draw_map(&fdf);
 	mlx_key_hook(fdf.win, keyboard_event, &fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
