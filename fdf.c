@@ -6,28 +6,28 @@
 /*   By: aouloube <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 17:23:45 by aouloube          #+#    #+#             */
-/*   Updated: 2016/02/11 18:44:25 by aouloube         ###   ########.fr       */
+/*   Updated: 2016/02/12 16:35:01 by aouloube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
+
 static t_point2d	get_iso_point(t_fdf *fdf, int x, int y, int z)
 {
-	t_point2d	point;
+	t_point2d		point;
 
 	point.x = ISO_ANGLE * (x * cos(RAD(ISO_ANGLE)) - y *
 			cos(RAD(ISO_ANGLE)));
-	point.y = (-ISO_ANGLE) * ((z * 0.1) - x *
+	point.y = (-ISO_ANGLE) * ((z * fdf->relief) - x *
 			sin(RAD(ISO_ANGLE)) - y * sin(RAD(ISO_ANGLE)));
 	point.x += fdf->map.offset.x;
 	point.y += fdf->map.offset.y;
 	return (point);
 }
 
-static int		upper_point(int ***map, int x, int y)
+static int			upper_point(int ***map, int x, int y)
 {
-	int		i;
+	int				i;
 
 	if (y > 0)
 	{
@@ -40,13 +40,11 @@ static int		upper_point(int ***map, int x, int y)
 	return (0);
 }
 
-void		draw_map(t_fdf *fdf)
+void				draw_map(t_fdf *fdf, int color, int deg)
 {
 	int		x;
 	int		y;
-	int		color;
 
-	color = 0x00BA3733;
 	y = 0;
 	while (fdf->map.map[y])
 	{
@@ -62,7 +60,8 @@ void		draw_map(t_fdf *fdf)
 							fdf->map.map[y][x][0]), get_iso_point(fdf,
 								x, y - 1, fdf->map.map[y - 1][x][0]), color);
 			x++;
-			color++;
+			if (deg)
+				color++;
 		}
 		y++;
 	}

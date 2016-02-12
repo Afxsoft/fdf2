@@ -6,15 +6,15 @@
 /*   By: aouloube <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 14:32:03 by aouloube          #+#    #+#             */
-/*   Updated: 2016/02/11 18:01:51 by aouloube         ###   ########.fr       */
+/*   Updated: 2016/02/12 15:18:09 by aouloube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	*malloc_int(int p)
+static int		*malloc_int(int p)
 {
-	int		*i;
+	int			*i;
 
 	if (!(i = (int*)malloc(sizeof(int))))
 		exit(0);
@@ -22,11 +22,11 @@ static int	*malloc_int(int p)
 	return (i);
 }
 
-static int	**tab_atoi(char **tab_char)
+static int		**tab_atoi(char **tab_char)
 {
-	int		**tab_int;
-	size_t	i;
-	size_t	j;
+	int			**tab_int;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	while (tab_char[i])
@@ -45,9 +45,9 @@ static int	**tab_atoi(char **tab_char)
 
 static int		ft_count_l(char *file)
 {
-	int		fd;
-	int		i;
-	char	*line;
+	int			fd;
+	int			i;
+	char		*line;
 
 	i = 0;
 	fd = open(file, O_RDONLY);
@@ -60,13 +60,13 @@ static int		ft_count_l(char *file)
 	return (i);
 }
 
-int			***load_map(char *file)
+int				***load_map(char *file)
 {
-	int		***map;
-	char	*line;
-	char	**l2;
-	int		fd;
-	size_t	i;
+	int			***map;
+	char		*line;
+	char		**l2;
+	int			fd;
+	size_t		i;
 
 	if (!(map = (int***)malloc(sizeof(int**) * (ft_count_l(file) + 1))))
 		exit(0);

@@ -6,16 +6,27 @@
 /*   By: aouloube <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 17:04:12 by aouloube          #+#    #+#             */
-/*   Updated: 2016/02/11 18:47:46 by aouloube         ###   ########.fr       */
+/*   Updated: 2016/02/12 16:37:24 by aouloube         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int keyboard_event(int keycode)
+int		keyboard_event(int keycode, t_fdf *fdf)
 {
 	if (keycode == KEYCODE_ESC)
 		exit(0);
+	else if (keycode == KEYCODE_TOP)
+	{
+		draw_map(fdf, 0x00000000, 0);
+		fdf->relief += 0.1;
+	}
+	else if (keycode == KEYCODE_BOTTOM)
+	{
+		draw_map(fdf, 0x00000000, 0);
+		fdf->relief -= 0.1;
+	}
+	expose_hook(fdf);
 	return (0);
 }
 
