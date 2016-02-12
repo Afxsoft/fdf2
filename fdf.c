@@ -62,7 +62,7 @@ void		draw_map(t_fdf *fdf)
 							fdf->map.map[y][x][0]), get_iso_point(fdf,
 								x, y - 1, fdf->map.map[y - 1][x][0]), color);
 			x++;
-			//color++;
+			color++;
 		}
 		y++;
 	}

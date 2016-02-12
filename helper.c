@@ -35,9 +35,9 @@ void	draw_line(t_fdf *fdf, t_point2d start, t_point2d end, int color)
 	{
 		mlx_pixel_put(fdf->mlx, fdf->win, start.x, start.y, color);
 		keep_res = res;
-		if (keep_res > -delta.x && (start.x += inc.x))
+		if (keep_res > -delta.x && ((start.x += inc.x) || 1))
 			res -= delta.y;
-		if (keep_res < delta.y && (start.y += inc.y))
+		if (keep_res < delta.y && ((start.y += inc.y) || 1))
 			res += delta.x;
 	}
 }
